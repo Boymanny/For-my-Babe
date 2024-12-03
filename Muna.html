@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Mine?</title>
+    <link rel="stylesheet" href="munaa.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hey MUNACHI! 💖</h1>
+        <p class="heartfelt-message">
+            I just wanted to tell you how much you mean to me. Every moment with you is special, and I feel so lucky to have you in my life, <br> you make every moment feel so magical and i love you for that. ❤️
+        </p>
+        
+        <!-- Continue Button -->
+        <div class="continue-button-container">
+            <button class="continue" onclick="showQuestions()">Would you like to continue?</button>
+        </div>
+
+        <!-- Question Phase (Initially Hidden) -->
+        <div class="question-container" id="questionContainer" style="display: none;">
+            <!-- First question -->
+            <div class="question" id="question1">
+                <p>Do you love me?</p>
+                <button class="yes" onclick="nextQuestion('yes', 1)">Yes</button>
+                <button class="no" onclick="nextQuestion('no', 1)">No</button>
+            </div>
+
+            <!-- Second question -->
+            <div class="question" id="question2">
+                <p>Will you be my girlfriend?</p>
+                <button class="yes" onclick="nextQuestion('yes', 2)">Yes</button>
+                <button class="no" onclick="nextQuestion('no', 2)">No</button>
+            </div>
+
+            <!-- Final message -->
+            <div class="final-message" id="finalMessage">
+                <p id="responseMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="munaaa.js"></script>
+</body>
+</html>
