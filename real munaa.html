@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Mine?</title>
+    
+    <!-- CSS inside the HTML using <style> -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* Background image */
+            background-image: url('Muna (1).jpg'); /* Add the image URL or path */
+            background-size: cover; /* Make the image cover the entire screen */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Keep the background fixed while scrolling */
+            position: relative;
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Adding an overlay to reduce the intensity of the background image */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+            z-index: -1; /* Place the overlay behind content */
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white background for the content */
+            border-radius: 10px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title */
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Heartfelt message */
+        .heartfelt-message {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Continue Button */
+        .continue-button-container {
+            margin-bottom: 20px;
+        }
+
+        .continue {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .continue:hover {
+            background-color: #45a049;
+        }
+
+        /* Questions and buttons */
+        .question {
+            display: none;  /* Hide questions initially */
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .no {
+            background-color: #f44336;
+        }
+
+        .no:hover {
+            background-color: #e60000;
+        }
+
+        /* Final response message */
+        .final-message {
+            display: none; /* Hide the final message initially */
+        }
+
+        #responseMessage {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hey MUNACHI! 💖</h1>
+        <p class="heartfelt-message">
+            I just wanted to tell you how much you mean to me. Every moment with you is special, and I feel so lucky to have you in my life. ❤️
+        </p>
+        
+        <!-- Continue Button -->
+        <div class="continue-button-container">
+            <button class="continue" onclick="showQuestions()">Would you like to continue?</button>
+        </div>
+
+        <!-- Question Phase (Initially Hidden) -->
+        <div class="question-container" id="questionContainer" style="display: none;">
+            <!-- First question -->
+            <div class="question" id="question1">
+                <p>Do you love me?</p>
+                <button class="yes" onclick="nextQuestion('yes', 1)">Yes</button>
+                <button class="no" onclick="nextQuestion('no', 1)">No</button>
+            </div>
+
+            <!-- Second question -->
+            <div class="question" id="question2">
+                <p>Will you be my girlfriend?</p>
+                <button class="yes" onclick="nextQuestion('yes', 2)">Yes</button>
+                <button class="no" onclick="nextQuestion('no', 2)">No</button>
+            </div>
+
+            <!-- Final message -->
+            <div class="final-message" id="finalMessage">
+                <p id="responseMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript inside the HTML using <script> -->
+    <script>
+        // Function to show the questions after clicking "Continue"
+        function showQuestions() {
+            // Hide the initial heartfelt message and the continue button
+            document.querySelector('.heartfelt-message').style.display = 'none';
+            document.querySelector('.continue-button-container').style.display = 'none';
+
+            // Show the question container
+            document.getElementById('questionContainer').style.display = 'block';
+
+            // Show the first question
+            document.getElementById('question1').style.display = 'block';
+        }
+
+        // Function to show the next question based on the user's answer
+        function nextQuestion(answer, questionNumber) {
+            const currentQuestion = document.getElementById(`question${questionNumber}`);
+            const nextQuestion = document.getElementById(`question${questionNumber + 1}`);
+            
+            // Hide the current question
+            currentQuestion.style.display = 'none';
+            
+            // If it's the last question, show the final message based on the answer
+            if (questionNumber === 2) {
+                const finalMessage = document.getElementById('finalMessage');
+                const responseMessage = document.getElementById('responseMessage');
+                
+                finalMessage.style.display = 'block';
+                
+                if (answer === 'yes') {
+                    responseMessage.innerHTML = "Yay! I'm so happy! You're the best!";
+                } else {
+                    responseMessage.innerHTML = "Oh no! But we can still be friends, right?";
+                }
+            } else {
+                // Show the next question
+                nextQuestion.style.display = 'block';
+            }
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            // We wait until the page is fully loaded before doing anything
+        });
+    </script>
+</body>
+</html>
